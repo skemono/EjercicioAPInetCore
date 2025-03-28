@@ -14,3 +14,12 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{EjercicioAPInetCore_HostAddress}}/api/incidents
+Content-Type: application/json
+
+{
+  //Incident
+}
+
+###

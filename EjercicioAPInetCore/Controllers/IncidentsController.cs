@@ -9,7 +9,7 @@ using IncidentApi.Models;
 
 namespace EjercicioAPInetCore.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class IncidentsController : ControllerBase
     {
