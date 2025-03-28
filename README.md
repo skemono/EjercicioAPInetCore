@@ -6,7 +6,7 @@ Este ejercicio tiene como objetivo desarrollar una API utilizando .NET Core, la 
 
 Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes componentes:
 
-- **.NET SDK**: Descarga e instala la última versión del [SDK de .NET](https://dotnet.microsoft.com/download). Verifica la instalación ejecutando:
+- **.NET SDK**: Descarga e instala la última versión (9.0) del [SDK de .NET](https://dotnet.microsoft.com/download). Verifica la instalación ejecutando:
   ```bash
   dotnet --version
   ```
@@ -30,15 +30,37 @@ Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes com
    ```bash
    cd EjercicioAPInetCore
    ```
-4. **Construir el Proyecto**  
+4. **Restaurar Dependencias**
+   Restaura los paquetes NuGet necesarios:
+   ```bash
+   dotnet restore
+   ```
+5. **Construir el Proyecto**  
    Compila el proyecto para asegurarte de que todo se construye correctamente:
    ```bash
    dotnet build
    ```
 
-5. **Ejecutar la API**  
-   Ejecuta la API (equivalente a usar Ctrl+F5 en Visual Studio Code) con:
+6. **Ejecutar la API**  
+   Ejecuta la API con:
    ```bash
    dotnet run
    ```
-   La aplicación se iniciará y, por lo general, estará disponible en `http://localhost:5004` sino revise el output en la consola.
+   La aplicación estara escuchando en `https://localhost:7146/incidents` y `http://localhost:5004/incidents`.
+
+## Endpoints
+- **POST /incidents**  
+  Crea un nuevo incidente.
+
+- **GET /incidents**  
+  Obtiene la lista de incidentes.
+
+- **GET /incidents/{id}**  
+  Obtiene un incidente específico.
+
+- **PUT /incidents/{id}**  
+  Actualiza el estado de un incidente.
+
+- **DELETE /incidents/{id}**  
+  Elimina un incidente reportado por error.
+
