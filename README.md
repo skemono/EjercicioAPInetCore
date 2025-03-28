@@ -18,7 +18,7 @@ Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes com
    Si aún no has descargado el proyecto, clónalo usando Git:
    ```bash
    git clone https://github.com/skemono/EjercicioAPInetCore.git
-   cd tuprojecto
+   cd EjercicioAPInetCore
    ```
 2. **Clonar el Repositorio**  
    Si aún no has descargado el proyecto, clónalo usando Git:
