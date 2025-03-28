@@ -1,0 +1,16 @@
+@EjercicioAPInetCore_HostAddress = https://localhost:7146
+
+GET {{EjercicioAPInetCore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{EjercicioAPInetCore_HostAddress}}/api/todoitems
+Content-Type: application/json
+
+{
+  "name": "walk dog",
+  "isComplete": true
+}
+
+###
