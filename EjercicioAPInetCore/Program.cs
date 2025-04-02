@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.MapOpenApi();
+app.MapGet("/", () => Results.Redirect("/swagger"));
 app.UseSwagger();
 app.UseSwaggerUI();
 
