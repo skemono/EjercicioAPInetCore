@@ -16,7 +16,8 @@ services:
       context: ./EjercicioAPInetCore
       dockerfile: Dockerfile
     environment:
-      ConnectionStrings__DefaultConnection: "Server=db;Database=IncidentDB;User Id=sa;Password=Pollocamperonashe2025!;"
+      ConnectionStrings__DefaultConnection: "Server=db;Database=IncidentDB;User Id=sa;Password=Pollocamperonashe2025!;TrustServerCertificate=True;"
+      ASPNETCORE_ENVIRONMENT: "Development"
       ASPNETCORE_URLS: "http://+:8080"
     depends_on:
       - db
