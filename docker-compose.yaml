@@ -4,7 +4,7 @@ services:
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      SA_PASSWORD: "pollocampero"
+      SA_PASSWORD: "Pollocamperonashe2025!"
       ACCEPT_EULA: "Y"
     volumes:
       - sql_data:/var/opt/mssql
@@ -16,7 +16,7 @@ services:
       context: ./EjercicioAPInetCore
       dockerfile: Dockerfile
     environment:
-      ConnectionStrings__DefaultConnection: "Server=db;Database=IncidentDB;User Id=sa;Password=pollocampero;"
+      ConnectionStrings__DefaultConnection: "Server=db;Database=IncidentDB;User Id=sa;Password=Pollocamperonashe2025!;"
     depends_on:
       - db
     ports:
