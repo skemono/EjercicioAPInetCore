@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.MapGet("/", () => Results.Redirect("/swagger"));
+app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
 app.UseSwagger();
 app.UseSwaggerUI();
 

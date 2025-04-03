@@ -44,14 +44,29 @@ namespace EjercicioAPInetCore.Controllers
         // PUT: api/Incidents/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutIncident(long id, Incident incident)
+        public async Task<IActionResult> PutIncident(long id, IncidentStaging incidentStaging)
         {
-            if (id != incident.id)
+            var existingIncident = await _context.Incidents.FindAsync(id);
+            if (existingIncident == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(incident).State = EntityState.Modified;
+            // Verificar si los campos son nulos antes de asignar
+            if (incidentStaging.reporter != null)
+            {
+                existingIncident.reporter = incidentStaging.reporter;
+            }
+
+            if (incidentStaging.description != null)
+            {
+                existingIncident.description = incidentStaging.description;
+            }
+
+            if (incidentStaging.status != null)
+            {
+                existingIncident.status = incidentStaging.status;
+            }
 
             try
             {
@@ -75,12 +90,25 @@ namespace EjercicioAPInetCore.Controllers
         // POST: api/Incidents
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Incident>> PostIncident(Incident incident)
+        public async Task<ActionResult<Incident>> PostIncident(IncidentStaging incidentStaging)
         {
+            // Manual validation for required fields
+            if (incidentStaging.reporter == null || incidentStaging.description == null || incidentStaging.status == null)
+            {
+                return BadRequest("Reporter, description, y status son requeridos.");
+            }
+
+            var incident = new Incident
+            {
+                reporter = incidentStaging.reporter,
+                description = incidentStaging.description,
+                status = incidentStaging.status
+            };
+
             _context.Incidents.Add(incident);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetIncident", new { id = incident.id }, incident);
+            return CreatedAtAction(nameof(GetIncident), new { id = incident.id }, incident);
         }
 
         // DELETE: api/Incidents/5
