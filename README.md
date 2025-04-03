@@ -6,10 +6,7 @@ Este ejercicio tiene como objetivo desarrollar una API utilizando .NET Core, la 
 
 Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes componentes:
 
-- **.NET SDK**: Descarga e instala la última versión (9.0) del [SDK de .NET](https://dotnet.microsoft.com/download). Verifica la instalación ejecutando:
-  ```bash
-  dotnet --version
-  ```
+- **Docker**: Descarga e instala docker para levantar los contenedores y la api.
 - **Git** (opcional): Para clonar el repositorio si aún no tienes los archivos del proyecto.
 
 ## Instrucciones de Configuración
@@ -18,35 +15,16 @@ Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes com
    Si aún no has descargado el proyecto, clónalo usando Git:
    ```bash
    git clone https://github.com/skemono/EjercicioAPInetCore.git
-   cd EjercicioAPInetCore
    ```
-2. **Clonar el Repositorio**  
-   Si aún no has descargado el proyecto, clónalo usando Git:
-   ```bash
-   git clone https://github.com/skemono/EjercicioAPInetCore.git
-   cd EjercicioAPInetCore
-   ```
-3. **Entrar a la carpeta principal**  
+2. **Entrar a la carpeta principal**  
    ```bash
    cd EjercicioAPInetCore
    ```
-4. **Restaurar Dependencias**
-   Restaura los paquetes NuGet necesarios:
+3. **Buildea los contenedores con docker compose.**
    ```bash
-   dotnet restore
+   docker-compose up --build
    ```
-5. **Construir el Proyecto**  
-   Compila el proyecto para asegurarte de que todo se construye correctamente:
-   ```bash
-   dotnet build
-   ```
-
-6. **Ejecutar la API**  
-   Ejecuta la API con:
-   ```bash
-   dotnet run
-   ```
-   La aplicación estara escuchando en `https://localhost:7146/incidents` y `http://localhost:5004/incidents`.
+   La aplicación estara escuchando en `http://localhost:8080` y `http://localhost:8080/incidents`
 
 ## Endpoints
 - **POST /incidents**  
@@ -59,8 +37,8 @@ Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes com
   Obtiene un incidente específico.
 
 - **PUT /incidents/{id}**  
-  Actualiza el estado de un incidente.
+  Actualiza los datos de un incidente.
 
 - **DELETE /incidents/{id}**  
-  Elimina un incidente reportado por error.
+  Elimina un incidente existente.
 
