@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using IncidentApi.Models;
+using Humanizer;
 
 namespace EjercicioAPInetCore.Controllers
 {
@@ -44,29 +45,22 @@ namespace EjercicioAPInetCore.Controllers
         // PUT: api/Incidents/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutIncident(long id, IncidentStaging incidentStaging)
+        public async Task<IActionResult> PutIncident(long id, IncidentUpdate incidentUpdate)
         {
             var existingIncident = await _context.Incidents.FindAsync(id);
-            if (existingIncident == null)
-            {
-                return NotFound();
-            }
 
             // Verificar si los campos son nulos antes de asignar
-            if (incidentStaging.reporter != null)
-            {
-                existingIncident.reporter = incidentStaging.reporter;
+
+            var validStatuses = new HashSet<string> { "Pendiente", "EnProceso", "Resuelto" };
+
+            string statusString = incidentUpdate.status.ToString() ?? string.Empty;
+
+            if (!validStatuses.Contains(statusString)){
+                return BadRequest("Invalid status value. Allowed values: Pendiente, EnProceso, Resuelto.");
             }
 
-            if (incidentStaging.description != null)
-            {
-                existingIncident.description = incidentStaging.description;
-            }
 
-            if (incidentStaging.status != null)
-            {
-                existingIncident.status = incidentStaging.status;
-            }
+            existingIncident.status = incidentUpdate.status;
 
             try
             {
@@ -96,6 +90,11 @@ namespace EjercicioAPInetCore.Controllers
             if (incidentStaging.reporter == null || incidentStaging.description == null || incidentStaging.status == null)
             {
                 return BadRequest("Reporter, description, y status son requeridos.");
+            }
+
+            if (incidentStaging.description.Length < 10)
+            {
+                return BadRequest("La descripcion debe tener al menos 10 caracteres.");
             }
 
             var incident = new Incident
