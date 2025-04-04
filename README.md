@@ -10,7 +10,7 @@ Este ejercicio tiene como objetivo desarrollar una API utilizando .NET Core, la 
 
 Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes componentes:
 
-- **Docker** 🐳: Descarga e instala Docker para levantar los contenedores y la API.
+- **Docker** 🐳: Descarga e instala Docker para levantar los contenedores y tenlo corriendo.
 - **Git** (opcional) 🔗: Para clonar el repositorio si aún no tienes los archivos del proyecto.
 
 ## Instrucciones de Configuración 🚀
