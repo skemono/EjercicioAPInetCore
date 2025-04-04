@@ -56,7 +56,7 @@ namespace EjercicioAPInetCore.Controllers
             string statusString = incidentUpdate.status.ToString() ?? string.Empty;
 
             if (!validStatuses.Contains(statusString)){
-                return BadRequest("Invalid status value. Allowed values: Pendiente, EnProceso, Resuelto.");
+                return BadRequest("Invalid st atus value. Allowed values: Pendiente, EnProceso, Resuelto.");
             }
 
 
